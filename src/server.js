@@ -1,9 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 
+const productRoutes = require('./routes/ProductRoutes');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use('/product', productRoutes);
 
 const connectDatabase = require('./config/database');
 
