@@ -23,3 +23,9 @@ exports.deleteProductById = async (req, res, next) => {
         .then(() => res.status(201).json({message: "The product is deleted"}))
         .catch(err => res.status(404).json({message: err.message}))
 }
+
+exports.updateProductById = async (req, res, next) => {
+    await Product.findByIdAndUpdate(req.params.id, {...req.body})
+        .then(() => res.status(201).json({message: "The product is updated"}))
+        .catch(err => res.status(404).json({message: err.message}))
+}
