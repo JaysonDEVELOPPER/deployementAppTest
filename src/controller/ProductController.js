@@ -11,3 +11,9 @@ exports.createProduct = async (req, res, next) => {
         .then(() => res.status(201).json({ message: "The product is created" }))
         .catch (err => res.status(500).json({ message: err.message }))
 }
+
+exports.getProductById = async (req, res, next) => {
+    await Product.findById(req.params.id)
+        .then(product => res.status(200).json(product))
+        .catch(err => res.status(404).json({message: err.message}))
+}
