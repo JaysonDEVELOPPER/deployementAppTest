@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+require('dotenv')
 
 const connectDatabase = () => {
-    mongoose.connect('mongodb://root:root@localhost:27017/test?authSource=admin')
+    mongoose.connect(process.env.URL_DATABASE)
         .then(() => console.log("Connect to the database"))
         .catch(err => console.log("Error: " + err.message));
 }
